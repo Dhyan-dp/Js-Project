@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Librarian Dashboard</title>
+</head>
+<body>
+    <h2>Librarian Dashboard</h2>
+    <button onclick="logout()">Logout</button>
+
+    <input type="text" placeholder="Book Title" id="book-title"/>
+    <input type="text" placeholder="Book Author" id="book-author"/>
+    <input type="text" placeholder="Book Genre" id="book-genre"/>
+    <input type="date" placeholder="Book Publication Date" id="book-date"/>
+
+    <button onclick="addBook()">Add Book</button>
+
+    <ul id="books"></ul> <!-- Updated to match JavaScript -->
+
+    <script src="librarian.js"></script>
+</body>
+</html>
