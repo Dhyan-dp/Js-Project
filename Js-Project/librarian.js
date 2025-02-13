@@ -9,28 +9,6 @@ let books = JSON.parse(localStorage.getItem("books")) || [];
 
 console.log(localStorage.getItem("books")); // Debugging line
 
-// function loadBooks() {
-//     const bookList = document.getElementById("books");
-//     bookList.innerHTML = "";
-//     books.forEach((book, index) => {
-//         const li = document.createElement("li");
-//         li.textContent =` ${book.title} by ${book.author} (Genre: ${book.genre}, Published: ${book.publicationDate});
-// `
-//         // Delete button
-//         const deleteBtn = document.createElement("button");
-//         deleteBtn.textContent = "Remove";
-//         deleteBtn.onclick = () => removeBook(index);
-
-//         // Update button
-//         const updateBtn = document.createElement("button");
-//         updateBtn.textContent = "Update";
-//         updateBtn.onclick = () => updateBook(index);
-
-//         li.appendChild(deleteBtn);
-//         li.appendChild(updateBtn);
-//         bookList.appendChild(li);
-//     });
-// }
 function loadBooks() {
     const bookList = document.getElementById("books");
     bookList.innerHTML = "";

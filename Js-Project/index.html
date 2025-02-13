@@ -13,8 +13,7 @@
 
         <!-- Login/Logout Section -->
         <div id="auth" class="flex justify-end gap-4 mb-6">
-            <!-- <input type="text" id="username" placeholder="Enter username"
-                class="p-2 border rounded w-full"> -->
+            
             <button  class="signup bg-blue-500 text-white px-4 py-2 rounded">Sign up</button>
             <!-- <button onclick="logout()" class="bg-red-500 text-white px-4 py-2 rounded">Logout</button> -->
         </div>
@@ -34,15 +33,7 @@
         <!-- Book List -->
         <div id="book-list" class="space-y-4"></div>
 
-        <!-- Add Book Section (For Admins) -->
-        <!-- <div class="mt-6 p-4 border rounded bg-gray-50">
-            <h3 class="text-lg font-semibold mb-2">Add New Book</h3>
-            <input type="text" id="book-title" placeholder="Title" class="p-2 border rounded w-full mb-2">
-            <input type="text" id="book-author" placeholder="Author" class="p-2 border rounded w-full mb-2">
-            <input type="text" id="book-genre" placeholder="Genre" class="p-2 border rounded w-full mb-2">
-            <input type="date" id="book-date" class="p-2 border rounded w-full mb-2">
-            <button onclick="addBook()" class="bg-green-500 text-white px-4 py-2 rounded w-full">Add Book</button>
-        </div> -->
+        
     </div>
 
     <script>
@@ -158,43 +149,7 @@ document.addEventListener("DOMContentLoaded", function () {
             localStorage.setItem("books", JSON.stringify(books));
             renderBooks();
         }
-        /*
-         function addBook() {
-            const title = document.getElementById("book-title").value.trim();
-            const author = document.getElementById("book-author").value.trim();
-            const genre = document.getElementById("book-genre").value.trim();
-            const publicationDate = document.getElementById("book-date").value;
-
-            if (!title || !author || !genre || !publicationDate) {
-                alert("Please fill in all fields.");
-                return;
-            }
-
-            const newBook = {
-                id: Date.now(),
-                title,
-                author,
-                genre,
-                publicationDate,
-                availability: true,
-            };
-
-            books.push(newBook);
-            localStorage.setItem("books", JSON.stringify(books));
-            renderBooks();
-
-            document.getElementById("book-title").value = "";
-            document.getElementById("book-author").value = "";
-            document.getElementById("book-genre").value = "";
-            document.getElementById("book-date").value = "";
-        }
-
-        function removeBook(index) {
-            books.splice(index, 1);
-            localStorage.setItem("books", JSON.stringify(books));
-            renderBooks();
-        }  
-*/
+        
         function login() {
             const username = document.getElementById("username").value;
             if (username.trim() !== "") {

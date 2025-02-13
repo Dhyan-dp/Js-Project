@@ -1,14 +1,8 @@
 // Redirect to login page when login button is clicked
-// const loginButton = document.querySelector(".login-btn");
 const loginButton1 = document.querySelector(".login-btns");
 
 
-// if (loginButton) {
-//     loginButton.addEventListener("click", function () {
-//         console.log("clicked");
-//         window.location.href = "login.html"; // Redirect to login page
-//     });
-// }
+
 
 function setFixedAdminCredentials() {
     if (!localStorage.getItem("admin")) {
@@ -25,7 +19,7 @@ function setFixedAdminCredentials() {
     setFixedAdminCredentials();
 // Login functionality
 // Selecting the login button (make sure the button's class in HTML matches)
-// const loginButton= document.querySelector(".login-btn");
+
 
 if (loginButton1) {
     loginButton1.addEventListener("click", function (event) {
