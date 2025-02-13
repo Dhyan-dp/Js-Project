@@ -117,10 +117,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 bookCard.innerHTML = `
                     <h3 class="text-lg font-semibold">${book.title}</h3>
-                    <p>📖 Author: ${book.author}</p>
-                    <p>📚 Genre: ${book.genre}</p>
-                    <p>📅 Published: ${book.publicationDate}</p>
-                    <p>✅ Available: ${book.availability ? "Yes" : "No"}</p>
+                    <p> Author: ${book.author}</p>
+                    <p> Genre: ${book.genre}</p>
+                    <p> Published: ${book.publicationDate}</p>
+                    <p> Available: ${book.availability ? "Yes" : "No"}</p>
                 `;
 
                 if (localStorage.getItem("username")) {

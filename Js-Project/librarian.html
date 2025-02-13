@@ -6,40 +6,30 @@
     <title>Librarian Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 text-gray-900 flex flex-col items-center p-6">
-
-    <!-- Header Section -->
-    <div class="w-full max-w-3xl bg-white p-4 rounded-lg shadow-md text-center mb-6">
-        <h2 class="text-2xl font-semibold">Librarian Dashboard</h2>
-        <button id="logout-btn" class="mt-2 bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600">
-            Logout
-        </button>
+<body>
+    <div class="flex justify-between items-center my-3 px-5 gap-5">
+        <h2 class="text-3xl font-bold text-center text-gray-800">
+            Librarian Dashboard
+        </h2>
+        
+        <button id="logout-btn" class="bg-red-500 px-3 py-2 my-3 rounded-md hover:bg-red-600">Logout</button>
     </div>
+   
+     <br>
+    <input type="text" placeholder="Book Title" id="book-title"/>
+    <input type="text" placeholder="Book Author" id="book-author"/>
+    <input type="text" placeholder="Book Genre" id="book-genre"/>
+    <input type="date" placeholder="Book Publication Date" id="book-date"/>
 
-    <!-- Book Input Section -->
-    <div class="w-full max-w-3xl bg-white p-6 rounded-lg shadow-md">
-        <h3 class="text-lg font-semibold mb-4">Add a New Book</h3>
-        <div class="grid gap-4">
-            <input type="text" placeholder="Book Title" id="book-title" 
-                class="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-400">
-            <input type="text" placeholder="Book Author" id="book-author" 
-                class="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-400">
-            <input type="text" placeholder="Book Genre" id="book-genre" 
-                class="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-400">
-            <input type="date" id="book-date" 
-                class="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-400">
-            <button onclick="addBook()" 
-                class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
-                Add Book
-            </button>
-        </div>
-    </div>
+    <button onclick="addBook()" class="bg-green-500 text-white font-semibold px-4 py-2 rounded-lg shadow-md hover:bg-green-600 transition-all">
+        Add Book
+    </button>
+    <br>
+    
 
-    <!-- Book List Section -->
-    <div class="w-full max-w-3xl bg-white p-6 mt-6 rounded-lg shadow-md">
-        <h3 class="text-lg font-semibold mb-4">Book List</h3>
-        <ul id="books" class="space-y-2 text-gray-700"></ul>
-    </div>
+
+
+    <ul id="books"></ul> <!-- Updated to match JavaScript -->
 
     <script src="librarian.js"></script>
 </body>
