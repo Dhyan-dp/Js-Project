@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-900">
+
+    <!-- Navbar -->
+    <div class="bg-blue-600 text-white px-6 py-4 flex justify-between items-center">
+        <h1 class="text-xl font-semibold">Library Management System</h1>
+        <button id="logout-btn" class="bg-red-500 px-4 py-2 rounded-md hover:bg-red-600">Logout</button>
+    </div>
+
+    <!-- Container -->
+    <div class="max-w-4xl mx-auto mt-8 p-6 bg-white shadow-md rounded-lg">
+
+        <!-- Search & Filter Section -->
+        <h2 class="text-lg font-semibold mb-4">Search and Filter Books</h2>
+        <div class="flex flex-wrap gap-4 mb-6">
+            <input type="text" id="searchInput" placeholder="Search by Title, Author, Genre" 
+                class="w-full md:w-1/2 p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400">
+            
+            <select id="sortSelect" class="p-2 border rounded-md">
+                <option value="">Sort By</option>
+                <option value="title">Title</option>
+                <option value="popularity">Popularity</option>
+                <option value="genre">Genre</option>
+            </select>
+
+            <select id="filterSelect" class="p-2 border rounded-md">
+                <option value="">Filter By</option>
+                <option value="available">Available</option>
+                <option value="genre">Genre</option>
+                <option value="publication_date">Publication Date</option>
+            </select>
+
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700" onclick="renderBooks()">Search</button>
+        </div>
+        
+        <!-- Book Catalog -->
+        <h2 class="text-lg font-semibold mb-4">Book Catalog</h2>
+        <div id="book-list" class="space-y-4"></div>
+    </div>
+
+    <script src="user.js"></script>
+</body>
+</html>
