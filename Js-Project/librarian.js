@@ -9,25 +9,65 @@ let books = JSON.parse(localStorage.getItem("books")) || [];
 
 console.log(localStorage.getItem("books")); // Debugging line
 
+// function loadBooks() {
+//     const bookList = document.getElementById("books");
+//     bookList.innerHTML = "";
+//     books.forEach((book, index) => {
+//         const li = document.createElement("li");
+//         li.textContent =` ${book.title} by ${book.author} (Genre: ${book.genre}, Published: ${book.publicationDate});
+// `
+//         // Delete button
+//         const deleteBtn = document.createElement("button");
+//         deleteBtn.textContent = "Remove";
+//         deleteBtn.onclick = () => removeBook(index);
+
+//         // Update button
+//         const updateBtn = document.createElement("button");
+//         updateBtn.textContent = "Update";
+//         updateBtn.onclick = () => updateBook(index);
+
+//         li.appendChild(deleteBtn);
+//         li.appendChild(updateBtn);
+//         bookList.appendChild(li);
+//     });
+// }
 function loadBooks() {
     const bookList = document.getElementById("books");
     bookList.innerHTML = "";
+    
     books.forEach((book, index) => {
         const li = document.createElement("li");
-        li.textContent =` ${book.title} by ${book.author} (Genre: ${book.genre}, Published: ${book.publicationDate});
-`
+        li.className = "flex flex-col sm:flex-row justify-between items-center bg-white p-4 rounded-lg shadow-lg border border-gray-300 my-4";
+
+        // Book details
+        const bookDetails = document.createElement("div");
+        bookDetails.className = "text-center sm:text-left";
+        bookDetails.innerHTML = `
+            <p class="text-lg font-semibold text-gray-800">${book.title}</p>
+            <p class="text-sm text-gray-600">by ${book.author}</p>
+            <p class="text-xs text-gray-500">Genre: ${book.genre} | Published: ${book.publicationDate}</p>
+        `;
+
+        // Button container
+        const buttonContainer = document.createElement("div");
+        buttonContainer.className = "mt-3 sm:mt-0 flex space-x-2";
+
         // Delete button
         const deleteBtn = document.createElement("button");
         deleteBtn.textContent = "Remove";
+        deleteBtn.className = "bg-red-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-red-600 transition-all";
         deleteBtn.onclick = () => removeBook(index);
 
         // Update button
         const updateBtn = document.createElement("button");
         updateBtn.textContent = "Update";
+        updateBtn.className = "bg-blue-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-blue-600 transition-all";
         updateBtn.onclick = () => updateBook(index);
 
-        li.appendChild(deleteBtn);
-        li.appendChild(updateBtn);
+        buttonContainer.appendChild(updateBtn);
+        buttonContainer.appendChild(deleteBtn);
+        li.appendChild(bookDetails);
+        li.appendChild(buttonContainer);
         bookList.appendChild(li);
     });
 }
