@@ -15,14 +15,13 @@
         <div id="auth" class="flex justify-end gap-4 mb-6">
             
             <button  class="signup bg-blue-500 text-white px-4 py-2 rounded">Sign up</button>
-            <!-- <button onclick="logout()" class="bg-red-500 text-white px-4 py-2 rounded">Logout</button> -->
+            
         </div>
         <p id="welcomeMessage" class="text-gray-600 text-center"></p>
 
         <!-- Book Search and Sort -->
         <div class="flex justify-between items-center mb-4">
-            <input type="text" id="searchInput" placeholder="Search books..." 
-                class="p-2 border rounded w-1/2">
+            
             <select id="sortSelect" class="p-2 border rounded">
                 <option value="title">Sort by Title</option>
                 <option value="genre">Sort by Genre</option>
@@ -32,7 +31,6 @@
 
         <!-- Book List -->
         <div id="book-list" class="space-y-4"></div>
-
         
     </div>
 
@@ -46,130 +44,37 @@
             });
         }
         
-  // Retrieve books array from localStorage
-let books = JSON.parse(localStorage.getItem("books")) || [];
-
-// Extract only book titles
-let bookTitles = books.map(book => book.title);
-
-// Log the book titles
-console.log(bookTitles);
-
 document.addEventListener("DOMContentLoaded", function () {
     let books = JSON.parse(localStorage.getItem("books")) || [];
-
-    // Extract only book titles
-    let bookTitles = books.map(book => book.title);
-
-    // Get the container to display titles
-    let bookList = document.getElementById("book-list");
-
-    // Append each title as a list item
-    bookTitles.forEach(title => {
-        let li = document.createElement("li");
-        li.textContent = title;
-        bookList.appendChild(li);
-    });
+    console.log(books);
+    renderBooks(books);
+    
+    document.getElementById("sortSelect").addEventListener("change", function () {
+          renderBooks(books);
+        });
 });
-        function checkLoginStatus() {
-            const username = localStorage.getItem("username");
-            const welcomeMessage = document.getElementById("welcomeMessage");
-            if (username) {
-                welcomeMessage.textContent = `Welcome, ${username}!`;
-                document.getElementById("username").style.display = "none";
-            } else {
-                welcomeMessage.textContent = "Browsing as guest.";
-            }
-        }
 
-        function renderBooks() {
+        function renderBooks(books) {
             const bookList = document.getElementById("book-list");
             bookList.innerHTML = "";
-            const searchQuery = document.getElementById("searchInput").value.toLowerCase();
+
             const sortOption = document.getElementById("sortSelect").value;
 
-            let filteredBooks = books.filter(book =>
-                book.title.toLowerCase().includes(searchQuery) ||
-                book.author.toLowerCase().includes(searchQuery) ||
-                book.genre.toLowerCase().includes(searchQuery)
-            );
-
             if (sortOption === "title") {
-                filteredBooks.sort((a, b) => a.title.localeCompare(b.title));
+               books.sort((a, b) => a.title.localeCompare(b.title));
             } else if (sortOption === "genre") {
-                filteredBooks.sort((a, b) => a.genre.localeCompare(b.genre));
+               books.sort((a, b) => a.genre.localeCompare(b.genre));
             } else if (sortOption === "publication_date") {
-                filteredBooks.sort((a, b) => new Date(a.publicationDate) - new Date(b.publicationDate));
+               books.sort((a, b) => new Date(a.publicationDate) - new Date(b.publicationDate));
             }
 
-            filteredBooks.forEach((book, index) => {
-                const bookCard = document.createElement("div");
-                bookCard.classList.add("p-4", "border", "rounded", "bg-white", "shadow");
+            books.forEach((book) => {
+            let li = document.createElement("li");
+            li.textContent = book.title;
+            bookList.appendChild(li);
+        });
+    }
 
-                bookCard.innerHTML = `
-                    <h3 class="text-lg font-semibold">${book.title}</h3>
-                    <p> Author: ${book.author}</p>
-                    <p> Genre: ${book.genre}</p>
-                    <p> Published: ${book.publicationDate}</p>
-                    <p> Available: ${book.availability ? "Yes" : "No"}</p>
-                `;
-
-                if (localStorage.getItem("username")) {
-                    bookCard.innerHTML += `
-                        <button class="bg-yellow-500 text-white px-3 py-1 rounded mt-2" onclick="borrowBook(${index})">Borrow</button>
-                        <button class="bg-blue-500 text-white px-3 py-1 rounded mt-2" onclick="returnBook(${index})">Return</button>
-                        <button class="bg-red-500 text-white px-3 py-1 rounded mt-2" onclick="removeBook(${index})">Remove</button>
-                    `;
-                }
-
-                bookList.appendChild(bookCard);
-            });
-        }
-
-        function borrowBook(index) {
-            if (!localStorage.getItem("username")) {
-                alert("Please log in to borrow a book.");
-                return;
-            }
-            if (books[index].availability) {
-                books[index].availability = false;
-                localStorage.setItem("books", JSON.stringify(books));
-                renderBooks();
-            } else {
-                alert("Book is already borrowed.");
-            }
-        }
-
-        function returnBook(index) {
-            if (!localStorage.getItem("username")) {
-                alert("Please log in to return a book.");
-                return;
-            }
-            books[index].availability = true;
-            localStorage.setItem("books", JSON.stringify(books));
-            renderBooks();
-        }
-        
-        function login() {
-            const username = document.getElementById("username").value;
-            if (username.trim() !== "") {
-                localStorage.setItem("username", username);
-                checkLoginStatus();
-                renderBooks();
-            } else {
-                alert("Enter a valid username.");
-            }
-        }
-
-        function logout() {
-            localStorage.removeItem("username");
-            document.getElementById("username").style.display = "inline-block";
-            checkLoginStatus();
-            renderBooks();
-        }
-
-        document.getElementById("searchInput").addEventListener("input", renderBooks);
-        document.getElementById("sortSelect").addEventListener("change", renderBooks);
     </script>
 </body>
 </html>

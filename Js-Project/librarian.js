@@ -1,13 +1,10 @@
 document.getElementById("logout-btn").addEventListener("click", function () {
-    localStorage.removeItem("loggedInUser"); // Remove user data from storage
+    
     alert("Logged out successfully!");
-    window.location.href = "index.html"; // Redirect to login
+    window.location.href = "index.html"; 
 });
 
-
 let books = JSON.parse(localStorage.getItem("books")) || [];
-
-console.log(localStorage.getItem("books")); // Debugging line
 
 function loadBooks() {
     const bookList = document.getElementById("books");
@@ -85,15 +82,6 @@ function removeBook(index) {
     localStorage.setItem("books", JSON.stringify(books));
     console.log(localStorage.getItem("books")); // Debugging line
     loadBooks();
-}
-
-function checkRole(role) {
-    const userRole = localStorage.getItem("role");
-    if (userRole !== role) {
-        alert("Access Denied!");
-        window.location.href = "login.html";
-    }
-    // loadBooks()
 }
 
 function logout() {

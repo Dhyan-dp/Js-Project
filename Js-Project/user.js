@@ -6,7 +6,7 @@ document.addEventListener("Domcontentloaded", function () {
 });
 
 document.getElementById("logout-btn").addEventListener("click", function () {
-    localStorage.removeItem("loggedInUser"); // Remove user data from storage
+    // localStorage.removeItem("loggedInUser"); // Remove user data from storage
     alert("Logged out successfully!");
     window.location.href = "index.html"; // Redirect to login
 });

@@ -7,8 +7,6 @@ if (loginButton) {
     });
 }
 
-
-
 // Registration functionality
 const signupButton = document.querySelector(".btn");
 

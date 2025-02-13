@@ -1,9 +1,6 @@
 // Redirect to login page when login button is clicked
 const loginButton1 = document.querySelector(".login-btns");
 
-
-
-
 function setFixedAdminCredentials() {
     if (!localStorage.getItem("admin")) {
         const fixedAdmin = {
@@ -47,7 +44,6 @@ if (loginButton1) {
 
         // Check for a match in the stored users
         const user= storedUsers.find(u => u.email === email && u.password === password && u.role.toLowerCase()===role);
-        // const admin= storedadmin.find(u => u.username === username && u.password === password && u.email===email);
         if(role==="admin")
             {
                  if(storedadmin && storedadmin.password === password && storedadmin.email===email)
